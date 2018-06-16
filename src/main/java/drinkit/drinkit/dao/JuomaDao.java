@@ -32,7 +32,10 @@ public class JuomaDao implements Dao<Juoma, Integer> {
                     + "WHERE id = ?");
             statement.setInt(1, key);
             ResultSet result = statement.executeQuery();
-            return new Juoma(key, result.getString("nimi"));
+            if (result.next()) {
+                return new Juoma(key, result.getString("nimi"));
+            }
+            return null;
         }
         
 

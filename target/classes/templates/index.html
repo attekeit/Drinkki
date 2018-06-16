@@ -1,0 +1,30 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Päävalikko</title>
+        <meta charset="UTF-8"></meta>
+
+    </head>
+
+
+    <body>
+        <h1>Drinkkilista</h1>
+        <ul>
+            <li th:each="drinkki : ${drinkit}">
+                <a th:href="@{~/drinkit/{id}(id=${drinkki.id})}">
+                    <span th:text="${drinkki.nimi}">Drinkki</span>
+                </a>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <a href="drinkit/">Luo uusi drinkki</a>
+            </li>
+            <li>
+                <a href="ainekset/">Lista raaka-aineista sekä aineiden lisäys</a>
+            </li>
+        </ul>
+    </body>
+</html>

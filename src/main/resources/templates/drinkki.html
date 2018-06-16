@@ -1,0 +1,45 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Drinkki</title>
+        <meta charset="UTF-8"></meta>
+    </head>
+
+    <body>
+        <h2 th:text="${drinkki.nimi}"/>
+        <ul>
+            <li th:each="resepti : ${reseptit}">
+                <span th:text="${resepti.raakaaine.nimi} + ', ' + ${resepti.maara}">Resepti</span><br/>
+                <span th:text='${resepti.ohje}'>Ohje</span><br/>
+            </li>
+        </ul>
+
+
+
+
+        <h3>Lisää raaka-aine drinkkiin</h3>
+        <form method="POST" action="">
+            Raaka-aine:<br/>
+            <select name="nimi">                
+                <option th:each="aines : ${ainekset}"
+                        th:value="${aines.id}"
+                        th:utext="${aines.nimi}"/>
+            </select><br/>
+            Järjestysluku (kokonaisluku, jonka mukaan reseptin kohdat listataan pienimmästä suurimpaan)<br/>
+            <input type="text" name="luku"/><br/>
+            Ohje (tarkennus kohdan valmistukseen)<br/>
+            <input type="text" name="ohje"/><br/>
+            Määrä<br/>
+            <input type="text" name="maara"/><br/>
+            <input type="submit" value ="Lisää"/>                
+        </form>
+
+        <ul>
+            <li>
+                <a href="/">Paluu alkuvalikkoon</a>
+            </li>
+        </ul>
+
+    </body>
+</html>
